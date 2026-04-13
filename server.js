@@ -69,7 +69,7 @@ app.post('/projects', async (req, res) => {
 app.delete('/projects/:id', async (req, res) => {
     try {
         await ProjectModel.findByIdAndDelete(req.params.id);
-        res.sendStatus(200);
+        res.status(200).json({ message: 'Project deleted' });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -111,7 +111,7 @@ app.delete('/employees/:id', function (req, res) {
                 console.error(err);
                 return res.status(500).json({ error: err.message });
             }
-            res.sendStatus(200);
+            res.status(200).json({ message: 'Employee deleted' });
         }
     );
 });
